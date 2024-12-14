@@ -1,14 +1,18 @@
 const express =  require('express');
 const {mongoDbConnection} = require('./connections/connect');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
 // import route file
 const appRoute = require('./routes/appRoute');
 
+
+// config dotenv
+dotenv.config();
+
 // connection to mongoDb database
-mongoDbConnection('mongodb://127.0.0.1:27017/UrlShortener');
-
-
+const atlasConnectionUri = process.env.DB_CONNECT_LOCALHOST==='true' ? process.env.MONGO_LOCALHOST_URI : process.env.MONGODB_ATLAS_URI;
+mongoDbConnection(atlasConnectionUri);
 
 // configure app server
 const app = express();
@@ -42,7 +46,7 @@ app.get('/default',(req,res)=>{
 app.use('/',appRoute);
 
 // setup default port
-const PORT = 8001;
+const PORT = process.env.PORT;
 
 
 // make server listen on default port
