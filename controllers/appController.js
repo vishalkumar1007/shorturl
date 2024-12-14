@@ -36,11 +36,13 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
 
         // get new code of url
         const NewUrlCode = generateRandomCode(5);
-        console.log('code : ',NewUrlCode);
 
         // define data model
-        const finalUrl = process.env.SERVER_IS_LIVE?`https://url-shortener-backend-khaki.vercel.app/?XCD=${NewUrlCode}`:`http://localhost:8001?XCD=${NewUrlCode}`;
+        const finalUrl = process.env.SERVER_IS_LIVE==='true'?`https://url-shortener-backend-khaki.vercel.app/?XCD=${NewUrlCode}`:`http://localhost:8001?XCD=${NewUrlCode}`;
+        console.log('live server : ',process.env.SERVER_IS_LIVE);
+        console.log('live server url : ',finalUrl);
 
+        
         const userCreateData = {
             assignedCode:NewUrlCode,
             UserProvidedUrl:userUrl,
