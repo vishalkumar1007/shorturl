@@ -38,7 +38,7 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
         const NewUrlCode = generateRandomCode(5);
 
         // define data model
-        const finalUrl = process.env.SERVER_IS_LIVE==='true'?`https://url-shortener-backend-khaki.vercel.app/?XCD=${NewUrlCode}`:`http://localhost:8001?XCD=${NewUrlCode}`;
+        const finalUrl = process.env.SERVER_IS_LIVE==='true'?`https://url-shortener-backend-khaki.vercel.app/?XCD=${NewUrlCode}`:`http://localhost:8081?XCD=${NewUrlCode}`;
         console.log('live server : ',process.env.SERVER_IS_LIVE);
         console.log('live server url : ',finalUrl);
 
