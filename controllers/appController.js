@@ -39,10 +39,12 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
         console.log('code : ',NewUrlCode);
 
         // define data model
+        const finalUrl = process.env.SERVER_IS_LIVE?`https://url-shortener-backend-khaki.vercel.app/?XCD=${NewUrlCode}`:`http://localhost:8001?XCD=${NewUrlCode}`;
+
         const userCreateData = {
             assignedCode:NewUrlCode,
             UserProvidedUrl:userUrl,
-            UrlByServer:`http://localhost:8001?XCD=${NewUrlCode}`,
+            UrlByServer:finalUrl,
         }
 
         // handel to store generated data in mongodb database
@@ -54,7 +56,7 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
         }
 
         // send success response with generated new url
-        res.status(200).json({url :`http://localhost:8001?XCD=${NewUrlCode}`});
+        res.status(200).json({url :finalUrl});
         
 
     } catch (error) {
