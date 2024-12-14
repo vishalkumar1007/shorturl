@@ -4,8 +4,8 @@ const appModel = require('../models/appModals');
 const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
     try {
         const {userUrl} = req.body;
-        console.log(`hello ji ${userUrl}`);
-
+        
+        console.log('server request coming' , userUrl);
         // check for userUrl have data or not , if not then return with status 401
         if( !(userUrl)){
             return res.status(401).json({msg:'userUrl must be requires'});
@@ -19,7 +19,7 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
         // check already provide url code is exist or not, if exist then send exist code to request user
         const checkForDuplicateData = await appModel.findOne({UserProvidedUrl:userUrl});
         if(checkForDuplicateData){
-            return res.status(409).json({msg:'already code exist for this url',url:checkForDuplicateData.UrlByServer})
+            return res.status(200).json({msg:'already code exist for this url',url:checkForDuplicateData.UrlByServer})
         }
 
 
