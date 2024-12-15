@@ -25,7 +25,7 @@ const handelToGenerateCodeForUrlRedirect = async (req,res)=>{
 
         // generate random code function
         const generateRandomCode = (size)=>{
-            const characters = 'ABCD!E12#3FGHIJ@KLab45cdefghijklM67NOPQRSTUVWXYZmnopq890rstuvwxyz';
+            const characters = 'ABCD!E123FGHIJKLab45cdefghijklM67NOPQRSTUVWXYZmnopq890rstuvwxyz';
             let newRandomCode = '';
             for(let i=1;i<=size;i++){
                 const randomNumber = Math.round(Math.random()*characters.length);
