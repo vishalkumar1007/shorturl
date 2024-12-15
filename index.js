@@ -3,7 +3,7 @@ const {mongoDbConnection} = require('./connections/connect');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// import route file
+// import route file from routers
 const appRoute = require('./routes/appRoute');
 
 
