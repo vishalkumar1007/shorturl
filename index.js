@@ -20,7 +20,7 @@ app.use(express.json());
 
 
 // setup cores for server request
-const allowedServer = ['http://localhost:3000','https://vishalkumar07.me']
+const allowedServer = ['http://localhost:3000','https://vishalkumar1007.github.io']
 
 app.use(cors({
     origin(origin,callback){
